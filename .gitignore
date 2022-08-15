@@ -7,3 +7,6 @@
 
 #avoid adding html
 *.html
+
+#all zip files
+*.zip
