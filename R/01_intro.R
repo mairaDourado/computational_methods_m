@@ -49,7 +49,7 @@ animals %in% more_animals
 
 ## subset with grep ------------------------------------------------------------
 more_animals[grepl("^d", more_animals)]
-
+?grepl
 ## ----recycling2---------------------------------------------------------------
 animals
 more_animals
@@ -75,7 +75,7 @@ animals_cls
 # Matrices
 set.seed(42)
 matrix(runif(20), ncol = 2)
-
+?runif
 matrix(nrow = 4, ncol = 3)
 
 nums <- 1:12
@@ -108,9 +108,19 @@ animals_df <- data.frame(name = animals,
 animals_df[2, 1]
 animals_df[animals_df$weight_class == "medium", ]
 animals_df[animals_df$weight_class == "medium", "weight"]
+animals_df
+animals_df[1]
+animals_df[animals_df$name == "rat", "weight"]
+animals_df$weight_class
+animals_df$weight
+class(animals_df$weight)
+animals_df[animals_df$weight > 30, ]
+animals_df[animals_df$weight > 30, "name" ]
+animals_df[animals_df$weight > 30, "weight"]
 
 # List
 animals_list <- list(animals_df, animals)
+animals_list
 animals_list[[1]]
 
 # Importing data ---------------------------------------------------------------
@@ -201,11 +211,13 @@ non_NA <- surveys[!is.na(surveys$weight) &
 dim(non_NA)
 
 complete.cases(surveys)
+?complete.cases
 
 surveys1 <- surveys[complete.cases(surveys) , ]
 dim(surveys1)
 
 surveys2 <- na.omit(surveys)
+?na.omit
 dim(surveys2)
 
 if (!dir.exists("data/processed")) dir.create("data/processed")
