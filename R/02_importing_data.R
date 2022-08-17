@@ -9,12 +9,18 @@
 cestes_files <- list.files(path = "data/raw/cestes",
                            pattern = "csv$",
                            full.names = TRUE)
+?list.files
 
 cestes_names <- gsub(".csv", "", basename(cestes_files), fixed = TRUE)
+?gsub
 
 envir <- read.csv(cestes_files[3])
+envir
 
 data_list <- lapply(cestes_files, read.csv)
+?lapply
+
+
 names(data_list) <- cestes_names
 
 length(data_list)
@@ -28,7 +34,11 @@ summary(data_list$envir)
 
 # Creating summary table for all environmental variables
 sd(envir$Clay)
+
 envir_mean <- apply(envir[, -1], 2, mean)
+args(apply)
+
+envir_mean
 envir_sd <- apply(envir[, -1], 2, sd)
 
 # Creating a function in R -----------------------------------------------------
@@ -91,3 +101,4 @@ comm_df$TaxonName <- NA
 for (sp in rownames(comm_df)) {
   comm_df[sp, "TaxonName"] <- data_list$splist$TaxonName[data_list$splist$TaxCode == sp]
 }
+
